@@ -12,9 +12,21 @@ public class CustomerStorage
     public void addCustomer(String data)
     {
         String[] components = data.split("\\s+");
-        if (components.length != 4) {
+
+        if (components.length == 4) {
+            if (!components[3].matches("\\+7[0-9]{10}")) {
+                throw new IllegalArgumentException("""
+                        Wrong phone format. Correct format:
+                        +79215637722""");
+            }
+            if (!components[2].matches("[a-z0-9.]+@[a-z0-9]+.[a-z]{2,6}")) {
+                throw new IllegalArgumentException("""
+                        Wrong email format. Correct format:
+                        vasily.petrov@gmail.com""");
+            }
+        } else {
             throw new IllegalArgumentException("""
-                    Wrong format. Correct format:
+                    Wrong command format. Correct format:
                     add Василий Петров vasily.petrov@gmail.com +79215637722""");
         }
 
