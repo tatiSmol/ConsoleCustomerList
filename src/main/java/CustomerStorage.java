@@ -1,16 +1,13 @@
 import java.util.HashMap;
 
-public class CustomerStorage
-{
+public class CustomerStorage {
     private HashMap<String, Customer> storage;
 
-    public CustomerStorage()
-    {
+    public CustomerStorage() {
         storage = new HashMap<>();
     }
 
-    public void addCustomer(String data)
-    {
+    public void addCustomer(String data) {
         String[] components = data.split("\\s+");
 
         if (components.length == 4) {
@@ -39,13 +36,11 @@ public class CustomerStorage
         storage.values().forEach(System.out::println);
     }
 
-    public void removeCustomer(String name)
-    {
+    public void removeCustomer(String name) {
         storage.remove(name);
     }
 
-    public int getCount()
-    {
+    public int getCount() {
         return storage.size();
     }
 }
